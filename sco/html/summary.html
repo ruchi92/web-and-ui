@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Summary</title>
+		<style>
+			body, html {
+			  padding: 10px;
+			  margin: 10px;
+			  border: 0px none;
+			  width: 80%;
+			  height: 95%;
+			  float: inherit;
+			}
+			body {
+			  border: 1px solid black;
+			  
+			}
+			header{
+				background-color: aqua;
+				text-align: center;
+			}
+		</style>
+		<script>
+			 window.onload = function(){
+    			var parameters = location.search.substring(1).split("&");   
+    			var firstVal = parameters[0].split("=");
+    			ans1 = unescape(firstVal[1]);
+
+    			var secondVal = parameters[1].split("=");    
+    			ans2 = unescape(secondVal[1]);    
+    			
+    			var thirdVal = parameters[2].split("=");    
+    			ans3 = unescape(thirdVal[1]);
+
+    			var fourthVal = parameters[3].split("=");    
+    			ans4 = unescape(fourthVal[1]);
+
+    			var fifthVal = parameters[4].split("=");    
+    			ans5 = unescape(fifthVal[1]);
+    			
+    		}
+		</script>
+	</head>
+	<body>
+			<a href ="survey.html"><img src = "../images/back.jpg"/></a>
+			<header>
+				<h4>Summary</h4>
+			</header>
+			<details>
+				<summary>Quantitive Section</summary>
+				<p>Number of Questions answered:2</p>
+				<p>Number of Correct answers  :1</p>
+			</details>
+				
+			<details>
+				<summary>Reading Section</summary>
+				<p>Number of Questions answered:1</p>
+				<p>Number of Correct answers:1</p>
+			</details>
+
+			<details>
+				<summary>Audio/video Section</summary>
+				<p>Number of Questions answered:1</p>
+				<p>Number of Correct answers  :1</p>
+			</details>
+			<details>
+				<summary>Score</summary>
+				<p>45 out of 60</p>
+			</details>
+			<form action ="login.html" method ="post">
+				<input type = "submit" value = "Finish">
+			</form>
+	</body>
+</head>
+</html>

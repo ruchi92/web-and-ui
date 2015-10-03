@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN" "http://www.w3.org/Math/DTD/mathml2/xhtml-math11-f.dtd">
+<html>
+	<head>
+		<style>
+			body, html {
+			  padding: 10px;
+			  margin: 10px;
+			  border: 0px none;
+			  width: 80%;
+			  height: 95%;
+			  float: inherit;
+			}
+			body {
+			  border: 1px solid black;
+			  
+			}
+			header{
+				background-color: aqua;
+				text-align: center;
+			}
+		</style>
+		<script>
+			function question2(chosenans){
+    			var parameters = location.search.substring(1).split("&");   
+    			var firstVal = parameters[0].split("=");    
+    			
+    			ans1 = unescape(firstVal[1]);
+             
+    			document.getElementById('ans').value = ans1;
+
+       			var value = document.getElementByName('option').value;
+			}
+
+		</script>
+	</head>
+	<body>
+		<a href ="question1.html"><img src = "../images/back.jpg"/></a>
+		<header>
+			<h4>Question 2</h4>
+		</header>
+		<table>
+			<tr>
+				<td>
+					<tr>
+						<p>Select the COSINE formula</p>
+					</tr>
+					<tr>
+						<form method = "get" action = "question3.html">
+						<tr>
+							<td><input type = "radio" name = "option" id = "option1" value = "a">A)
+								<math><mi>cos</mi><mfenced><mi>x</mi><mo>&#x00B1;</mo><mi>y</mi></mfenced><mo>=</mo><mi>cos</mi><mi>x</mi><mi>cos</mi><mi>y</mi><mo>&#x00B1;</mo><mi>sin</mi><mi>x</mi><mi>sin</mi><mi>y</mi></math>
+							</td>
+							<td><input type = "radio" name = "option" id = "option2" value = "b">B)
+								<math><mi>sin</mi><mfenced><mi>x</mi><mo>&#x00B1;</mo><mi>y</mi></mfenced><mo>=</mo><mi>sin</mi><mi>x</mi><mi>cos</mi><mi>y</mi><mo>&#x00B1;</mo><mi>cos</mi><mi>x</mi><mi>sin</mi><mi>y</mi></math>
+							</td>
+						</tr>
+						<tr>
+							<td><input type = "radio" name = "option" id = "option3" value = "c">C)
+								<math><mi>sin</mi><mi>x</mi><mo>+</mo><mi>sin</mi><mi>y</mi><mo>=</mo><mn>2</mn><mi>sin</mi><mfenced><mfrac><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow><mrow><mn>2</mn></mrow></mfrac></mfenced><mi>cos</mi><mfenced><mfrac><mrow><mi>x</mi><mo>-</mo><mi>y</mi></mrow><mrow><mn>2</mn></mrow></mfrac></mfenced></math>
+							</td>
+							<td><input type = "radio" name = "option" id = "option4" value = "d">D)
+								<math><mi>sin</mi><mi>x</mi><mo>-</mo><mi>sin</mi><mi>y</mi><mo>=</mo><mn>2</mn><mi>cos</mi><mfenced><mfrac><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow><mrow><mn>2</mn></mrow></mfrac></mfenced><mi>sin</mi><mfenced><mfrac><mrow><mi>x</mi><mo>-</mo><mi>y</mi></mrow><mrow><mn>2</mn></mrow></mfrac></mfenced></math>
+							</td>
+							<td>
+								<input type = "hidden" id = "ans" value ="">
+							</td>
+						</tr>
+						<footer>
+						<tr>
+							<td><input type = "submit" value = "Submit and Next Question" onclick="question2(this)"></td>
+							<td><input type = "reset" value = "Cancel and Clear Selection"></td>
+						</tr>
+						<footer>
+					</form>
+				  </tr>
+				</td>
+			</tr>
+		</table>
+	</body>
+
+</html>

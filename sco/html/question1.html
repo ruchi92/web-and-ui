@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN" "http://www.w3.org/Math/DTD/mathml2/xhtml-math11-f.dtd">
+<html>
+	<head>
+		<style>
+			body, html {
+			  padding: 10px;
+			  margin: 10px;
+			  border: 0px ;
+			  width: 80%;
+			  height: 95%;
+			  float: inherit;
+			}
+			body {
+			  border: 1px solid black;
+			  
+			}
+			header{
+				background-color: aqua;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h4>Question 1</h4>
+		</header>
+		<table>
+				<tr>
+					<td>
+					<tr>
+						<td><p>Given points (x1,y1) and (x2,y2) select the formula to find the equation of the given line.</p></td>
+					</tr>
+					<tr>
+						<td>
+							<image src = "../images/xy.jpg" height = "50%" width = "50%">
+							<!--<svg height="210" width="500">
+							  <line x1="0" y1="0" x2="0" y2="210" style="stroke:rgb(255,0,0);stroke-width:2" />
+							  <line x1="210" y1="210" x2="0" y2="210" style="stroke:rgb(255,0,0);stroke-width:2" />
+							  <line x1="210" y1="0" x2="0" y2="210" style="stroke:rgb(255,0,0);stroke-width:2" />
+							  Sorry, your browser does not support inline SVG.
+							</svg>-->
+						</td>
+					</tr>
+				</td>
+				<td>
+					<form method = "get" action = "question2.html">
+						<tr>
+							<td><input type = "radio" name="option" id = "option1" value = "a" >A)
+     							<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi><mo>=</mo><mi>m</mi><mo>*</mo><mi>x</mi><mo>+</mo><mi>c</mi></math>
+							</td>						
+							<td><input type = "radio" name = "option" id = "option2" value = "b">B)
+								<math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mfenced><mi>x</mi><mo>-</mo><mi>h</mi></mfenced><mn>2</mn></msup><mo>+</mo><msup><mfenced><mi>y</mi><mo>-</mo><mi>k</mi></mfenced><mn>2</mn></msup><mo>=</mo><msup><mi>r</mi><mn>2</mn></msup></math></td>
+							
+						</tr>
+						<tr>
+							<td><input type = "radio" name="option" id = "option3" value = "c" >C)
+								<math xmlns="http://www.w3.org/1998/Math/MathML"><mfenced><mi>y</mi><mo>-</mo><mi>y1</mi></mfenced><mo>=</mo><mi>m</mi><mfenced><mi>x</mi><mo>-
+								</mo><mi>x1</mi></mfenced></math>
+							</td>
+							
+							<td><input type = "radio" name="option" id = "option4" value = "d" >D)
+								<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi><mo>-</mo><mi>y2</mi><mo>=</mo><mfenced><mfrac><mrow><mi>y2</mi><mo>-</mo><mi>y1</mi></mrow><mrow><mi>x2</mi><mo>-</mo><mi>x1</mi></mrow></mfrac></mfenced><mi>x</mi><mo>-</mo><mi>x2</mi></math>
+							</td>
+						</tr>
+						<footer>	
+						<tr>
+							<td><input type = "submit" value = "Submit and Next Question" onclick="question1(this)"></td>
+							<td><input type = "reset" value = "Cancel and Clear Selection"></td>
+						</tr>
+					</footer>
+					</form>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

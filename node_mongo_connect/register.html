@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html ng-app = "myApp">
+	<head>
+		<title>Register</title>
+			<!-- Latest compiled and minified CSS -->
+			<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+			<!-- jQuery library -->
+			 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+			<!-- Latest compiled JavaScript -->
+			<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	   <style type="text/css">
+          .bs-example{
+            margin: 20px;
+          }
+        /* Fix alignment issue of label on extra small devices in Bootstrap 3.2 */
+          .form-horizontal .control-label{
+              padding-top: 7px;
+          }
+      </style>
+      <script>
+        function session_storage(){
+            var user_id = document.getElementById("userId");
+            var password_value = document.getElementById("password");
+            var verify_password = document.getElementById("password_verify");
+            var email = document.getElementById("inputEmail");
+            var verify_email = document.getElementById("email_verify");
+            var sq_1 = document.getElementById("survey_question1");
+            var ans_1 = document.getElementById("answer1");
+            var sq_2 = document.getElementById("survey_question2");
+            var ans_2 = document.getElementById("answer2");
+            var mob_num = document.getElementById("mobile_number");
+            var add = document.getElementById("address");
+            var area_interest = document.getElementById("interest");
+
+            //Seesion Storage
+            sessionStorage.setItem("userId",user_id.value);
+            sessionStorage.setItem("password",password_value.value);
+            sessionStorage.setItem("password_verify",verify_password.value);
+            sessionStorage.setItem("inputEmail",email.value);
+            sessionStorage.setItem("email_verify",verify_email.value);
+            sessionStorage.setItem("survey_question1",sq_1.value);
+            sessionStorage.setItem("answer1",ans_1.value);
+            sessionStorage.setItem("survey_question2",sq_2.value);
+            sessionStorage.setItem("answer2",ans_2.value);
+            sessionStorage.setItem("mobile_number",mob_num.value);
+            sessionStorage.setItem("address",add.value);
+            sessionStorage.setItem("interest",area_interest.value);
+
+            //local storage
+            localStorage.setItem("userId",user_id.value);
+            localStorage.setItem("password",password_value.value);
+            localStorage.setItem("password_verify",verify_password.value);
+            localStorage.setItem("inputEmail",email.value);
+            localStorage.setItem("email_verify",verify_email.value);
+            localStorage.setItem("survey_question1",sq_1.value);
+            localStorage.setItem("answer1",ans_1.value);
+            localStorage.setItem("survey_question2",sq_2.value);
+            localStorage.setItem("answer2",ans_2.value);
+            localStorage.setItem("mobile_number",mob_num.value);
+            localStorage.setItem("address",add.value);
+            localStorage.setItem("interest",area_interest.value);
+          }
+
+          //Jquery to call validate_password function
+         function validate_mobileno(){
+           re = /[0-9]{10}/;
+              if(!re.test(document.getElementById("mobile_number").value) ||document.getElementById("mobile_number").value.length < 10 || document.getElementById("mobile_number").value.length > 10){
+                  alert("Error: The mobile number should contain only digits and should be of 10 digit length");
+                  document.getElementById("mobile_number").focus();
+                  return false;
+           }
+          
+         }
+
+         function validate_email(){
+          console.log(document.getElementById("email_verify").value);
+           if(document.getElementById("inputEmail").value != document.getElementById("email_verify").value){
+              alert("Error: Please check that you've entered and confirmed your email!");
+               document.getElementById("inputEmail").focus();
+               return false;
+           }
+         }
+
+          function validate_password(){
+            // Form validation
+              console.log("hii");
+
+              re = /^\w+$/;
+              if(!re.test(document.getElementById("userId").value)) {
+                alert("Error: Username must contain only letters, numbers and underscores!");
+                document.getElementById("userId").focus();
+                return false;
+              }
+
+              if(document.getElementById("password").value != "" && document.getElementById("password").value == document.getElementById("password_verify").value) {
+                if(document.getElementById("password").value.length < 7) {
+                  alert("Error: Password must contain at least seven characters!");
+                  document.getElementById("password").focus();
+                  return false;
+                }
+                if(document.getElementById("password").value == document.getElementById("userId").value) {
+                  alert("Error: Password must be different from Username!");
+                  document.getElementById("password").focus();
+                  return false;
+                }
+                re = /[0-9]/;
+                if(!re.test(document.getElementById("password").value)) {
+                  alert("Error: password must contain at least one number (0-9)!");
+                  document.getElementById("password").focus();
+                  return false;
+                }
+                re = /[a-z]/;
+                if(!re.test(document.getElementById("password").value)) {
+                  alert("Error: password must contain at least one lowercase letter (a-z)!");
+                  document.getElementById("password").focus();
+                  return false;
+                }
+                re = /[A-Z]/;
+                if(!re.test(document.getElementById("password").value)) {
+                  alert("Error: password must contain at least one uppercase letter (A-Z)!");
+                  document.getElementById("password").focus();
+                  return false;
+                }
+              } else {
+                alert("Error: Please check that you've entered and confirmed your password!");
+                document.getElementById("password").focus();
+                return false;
+              }
+              progress_bar();
+              document.getElementById("progress").focus();
+              return true;  
+            }
+
+            function progress_bar(){      
+                  var text_entered = document.getElementById("password").value.length;
+
+                  var element = document.getElementById("progress");
+
+                  if(text_entered >= 7 && text_entered <= 10){
+                    element.innerHTML = "Good!";
+                    element.style.width = "50%";
+                    element.className = "progress-bar progress-bar-warning progress-bar-striped active";
+                  }
+                  else if(text_entered >= 11 && text_entered <= 15){
+                    element.innerHTML = "Strong!";
+                    element.style.width = "70%";
+                    element.className = "progress-bar progress-bar-info progress-bar-striped active";
+                  }
+                  else if(text_entered >= 16){
+                    element.innerHTML = "Very Strong!";
+                    element.style.width = "100%";
+                    element.className = "progress-bar progress-bar-success progress-bar-striped active";
+                   }
+              }
+       
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover(); 
+        });
+      </script>
+  </head>
+	<body>
+
+		<div class="page-header" align = "center">
+	   		<h3>Registration Page</h3>
+    </div>
+    <div class = "container">
+
+      <form method = "post" action = "http://localhost:8080/create" class="form-horizontal" id "register" ng-controller = "RegisterController">
+        <!--User ID field-->
+        <div class="form-group">
+            <label for="userId" class="control-label col-xs-2">USER NAME:</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" id="userId" placeholder="ruchi_22" required data-toggle="popover" title="USER NAME" data-content="Should contain : Number, Characters, underscores " ng-model = "myForm.username">
+            </div>
+        </div>
+        <!--Password field-->
+        <div class="form-group">
+            <label for="password" class="control-label col-xs-2">Password:</label>
+            <div class="col-xs-4">
+                <input type="password" class="form-control" id="password" required data-toggle="popover" title="Password" data-content="Should contain : 1. Atleat one char 2. Atleast one upper case char 3. Atleat one number 4. Should be atleast of 7 characters ...and It should not be the same as User Name" ng-model = "myForm.password">
+            </div>
+            <div class = "col-xs-3">
+              <div class="progress">
+                <div id = "progress" class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar"
+                  aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width:10%">
+                  Weak!
+                </div>
+              </div>
+            </div>
+        </div>
+        <!--Verify Password field-->
+        <div class="form-group">
+            <label for="password_verify" class="control-label col-xs-2">Verify Password:</label>
+            <div class="col-xs-4">
+                <input type="password" class="form-control" id="password_verify" required ng-model = "myForm.verify_password">
+            </div>
+        </div>
+        <!--Email field-->
+        <div class="form-group">
+            <label for="inputEmail" class="control-label col-xs-2">Email Address:</label>
+            <div class="col-xs-4">
+                 <input type="email" class="form-control" id="inputEmail" placeholder="xyz@xyz.com" required onkeypress="return validate_password();" ng-model = "myForm.email">
+            </div>
+        </div>
+        <!--Verify Email field-->
+        <div class="form-group">
+            <label for="email_verify" class="control-label col-xs-2">Verify Email Address:</label>
+            <div class="col-xs-4">
+                <input type="email" class="form-control" id="email_verify" placeholder = "xyz@xyz.com" required ng-model = "myForm.email_verify">
+            </div>
+        </div>
+
+        <!--Security Question1 field-->
+        <div class="form-group">
+            <label for="survey_question1" class="control-label col-xs-2">Security Question 1:</label>
+            <div class="col-xs-4">
+                <input  list="survey_question1" class="form-control" placeholder = "--SELECT ONE--" required onchange = "return validate_email();">
+                <datalist id="survey_question1">
+
+                  <option value = "Sum Of 2 + 3 ="></option>
+                  <option value = "Sum of 100 + 200 ="></option>
+                  <option value = "23 * 100 ="></option>
+                  <option value = "Capital of India is..."></option>
+                  <option value = "Capital of USA is..."></option>
+                  <option value = "Capital of California is..."></option>
+
+                </datalist>
+            </div>
+        </div>
+
+        <!--Verify Survey Answer-1 field-->
+        <div class="form-group">
+            <label for="answer1" class="control-label col-xs-2">Security Answer 1:</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" id="answer1" placeholder = "Your answer!" required>
+            </div>
+        </div>
+
+        <!--Security Question2 field-->
+        <div class="form-group">
+            <label for="survey_question2" class="control-label col-xs-2">Security Question 2:</label>
+            <div class="col-xs-4">
+                <input list="survey_question2" class="form-control" placeholder = "--SELECT ONE--" required>
+                <datalist id="survey_question2">
+
+                  <option value = "Sum Of 3 + 6 ="></option>
+                  <option value = "Sum of 10 + 20 ="></option>
+                  <option value = "32 * 200 ="></option>
+                  <option value = "Capital of China is..."></option>
+                  <option value = "Capital of Canada is..."></option>
+                  <option value = "Capital of Austrailia is..."></option>
+
+                </datalist>
+            </div>
+        </div>
+
+        <!--Verify Survey Answer-2 field-->
+        <div class="form-group">
+            <label for="answer2" class="control-label col-xs-2">Security Answer 2:</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" id="answer2" placeholder = "Your answer!" required>
+            </div>
+        </div>
+
+        <!-- Mobile Number field-->
+        <div class="form-group">
+            <label for="mobile_number" class="control-label col-xs-2">Cell Phone#:</label>
+            <div class="col-xs-4">
+                <input type="tel" class="form-control" id="mobile_number" placeholder = "xxx-xxx-xxxx" required ng-model = "myForm.mobileNumber">
+            </div>
+        </div>
+
+        <!--Address field-->
+        <div class="form-group">
+            <label for="address" class="control-label col-xs-2">Address:</label>
+            <div class="col-xs-4">
+                <textarea rows = "3" cols="50" class="form-control" id="address" placeholder = " Enter Your Address Here!!" required onkeypress = "return validate_mobileno();" ng-model = "myForm.address"></textarea>
+            </div>
+        </div>
+
+        <!--Areas of Interest field-->
+        <div class="form-group">
+            <label for="interest" class="control-label col-xs-2">Areas of Interest:</label>
+            <div class="col-xs-4">
+                <input type = "text" list="interest" multiple class="form-control" placeholder = "--Select Things That Interests You!--" required>
+                <datalist id="interest">
+
+                  <option value = "Travelling"></option>
+                  <option value = "Cooking"></option>
+                  <option value = "Hiking"></option>
+                  <option value = "Painting"></option>
+                  <option value = "Driving"></option>
+                  <option value = "Athletics"></option>
+
+                </datalist>
+            </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-4 col-sm-10">
+              <input value = "REGISTER" onclick = "return session_storage();" class="btn btn-primary" ng-click="myForm.submitForm()">
+          </div>
+        </div>
+        
+      </form>
+    </div>
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+    
+    <script>
+      angular.module("myApp", [])
+         .controller("RegisterController", function($scope, $http) {
+           $scope.myForm = {};
+           // $scope.myForm.username = "Jakob Jenkov";
+           // $scope.myForm.password  = "nissan";
+
+         $scope.myForm.submitForm = function(item, event) {
+           console.log("--> Submitting form");
+
+         var dataObject = {
+             name : $scope.myForm.username,
+             password: $scope.myForm.password,
+             verify_password: $scope.myForm.verify_password,
+             email : $scope.myForm.email,
+             verify_email: $scope.myForm.email_verify,
+             mobile_number: $scope.myForm.mobileNumber,
+             address: $scope.myForm.address
+            };
+
+            var responsePromise = $http.post("/create", dataObject, {});
+            responsePromise.success(function(dataFromServer, status, headers, config) {
+               console.log(dataObject);
+            });
+             responsePromise.error(function(data, status, headers, config) {
+               alert("Submitting form failed!");
+            });
+         }
+
+      });
+</script>
+
+    <!--Progress Bar simple example-->
+            <!--   <legend>The progress Bar </legend>
+             <p>
+             <progress id="progressbar" value="30" max="100"></progress> 
+                       
+                          <button type="button" value="100">100%</button> 
+                          <button type="button" value="50">50%</button> 
+                          <button type="button" value="20">20%</button> 
+                      </p> 
+
+                      <script> 
+                          var buttons = document.getElementsByTagName('button'); 
+                          var progress = document.getElementById('progressbar'); 
+                          for (var x = 0; x < buttons.length; x++) { 
+                               buttons[x].onclick = function(progress_element) { 
+                                    progress.value = progress_element.target.value; 
+                               }; 
+                          } 
+                      </script>  
+            <p>NOTE: Ignore the script incase you don't understand,
+             concentrate on just progress element.</p>-->      
+
+	</body>
+</html>

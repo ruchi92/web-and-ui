@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset=utf-8>
+<meta name="viewport" content="width=620">
+<title>Internet connectivity monitoring</title>
+<link rel="stylesheet" href="css/html5demos.css">
+<script>
+var addEvent = (function () {
+  if (document.addEventListener) {
+    return function (el, type, fn) {
+      if (el && el.nodeName || el === window) {
+        el.addEventListener(type, fn, false);
+      } else if (el && el.length) {
+        for (var i = 0; i < el.length; i++) {
+          addEvent(el[i], type, fn);
+        }
+      }
+    };
+  } else {
+    return function (el, type, fn) {
+      if (el && el.nodeName || el === window) {
+        el.attachEvent('on' + type, function () { return fn.call(el, window.event); });
+      } else if (el && el.length) {
+        for (var i = 0; i < el.length; i++) {
+          addEvent(el[i], type, fn);
+        }
+      }
+    };
+  }
+})();
+
+(function () {
+
+var pre = document.createElement('pre');
+pre.id = "view-source"
+
+// private scope to avoid conflicts with demos
+addEvent(window, 'click', function (event) {
+  if (event.target.hash == '#view-source') {
+    // event.preventDefault();
+    if (!document.getElementById('view-source')) {
+      // pre.innerHTML = ('<!DOCTYPE html>\n<html>\n' + document.documentElement.innerHTML + '\n</html>').replace(/[<>]/g, function (m) { return {'<':'&lt;','>':'&gt;'}[m]});
+      var xhr = new XMLHttpRequest();
+
+      // original source - rather than rendered source
+      xhr.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          pre.innerHTML = this.responseText.replace(/[<>]/g, function (m) { return {'<':'&lt;','>':'&gt;'}[m]});
+          prettyPrint();
+        }
+      };
+
+      document.body.appendChild(pre);
+      // really need to be sync? - I like to think so
+      xhr.open("GET", window.location, true);
+      xhr.send();
+    }
+    document.body.className = 'view-source';
+    
+    var sourceTimer = setInterval(function () {
+      if (window.location.hash != '#view-source') {
+        clearInterval(sourceTimer);
+        document.body.className = '';
+      }
+    }, 200);
+  }
+});
+  
+})();
+</script></head>
+<body>
+<section id="wrapper">
+<div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/14060/azcarbon_2_1_0_VERT"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script></div></div>
+    <header>
+      <h2>Internet connectivity monitoring</h2>
+    </header>
+
+<article>
+  <p> Your current network status: <span id="status">Checking...</span></p>
+  <ol id="state"></ol>
+</article>
+<script>
+var statusElem  = document.getElementById('status'),
+    state       = document.getElementById('state');
+
+function online(event) {
+  statusElem.className = navigator.onLine ? 'online' : 'offline';
+  statusElem.innerHTML = navigator.onLine ? 'online' : 'offline';
+  state.innerHTML += '<li>New event: ' + event.type + '</li>';
+}
+
+addEvent(window, 'online', online);
+addEvent(window, 'offline', online);
+online({ type: 'ready' });
+</script>
+</section>
+<script src="js/prettify.packed.js"></script>
+<script>
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script>
+try {
+var pageTracker = _gat._getTracker("UA-1656750-18");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

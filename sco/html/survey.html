@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Survey</title>
+		<style>
+			body, html {
+			  padding: 10px;
+			  margin: 10px;
+			  border: 0px none;
+			  width: 80%;
+			  height: 95%;
+			  float: inherit;
+			}
+			body {
+			  border: 1px solid black;
+			  
+			}
+			header{
+				background-color: aqua;
+				text-align: center;
+			}
+		</style>
+		<script>
+			 function question4(chosenans){
+    			var parameters = location.search.substring(1).split("&");   
+    			var firstVal = parameters[0].split("=");
+    			ans1 = unescape(firstVal[1]);
+
+    			var secondVal = parameters[1].split("=");    
+    			ans2 = unescape(secondVal[1]);    
+    			
+    			var thirdVal = parameters[2].split("=");    
+    			ans3 = unescape(thirdVal[1]);
+
+    			var fourthVal = parameters[3].split("=");    
+    			ans4 = unescape(fourthVal[1]);
+
+    			var fifthVal = parameters[4].split("=");    
+    			ans5 = unescape(fifthVal[1]);
+    			
+
+    			document.getElementById('ans1').value = ans1;
+    			document.getElementById('ans2').value = ans2;
+    			document.getElementById('ans3').value = ans3;
+    			document.getElementById('ans4').value = ans4;
+    			document.getElementById('ans5').value = ans5;
+    			alert(ans1);
+    			alert(ans2);
+    			alert(ans3);
+    			alert(ans4);
+    			alert(ans5);
+    		}
+		</script>
+	</head>
+	<body>
+		<a href ="question4.html"><img src = "../images/back.jpg"/></a>
+		<header>
+			<p>Survey Form</p>
+		</header>
+		<table>
+			<form action = "summary.html" method = "get">
+				<tr>
+					<p>How did you like the center?</p>
+				</tr>
+				<tr>
+					<textarea rows = "4" cols = "50"></textarea>
+				</tr>
+				<tr><h4>Select your location</h4></tr>
+				<tr>
+					<td>
+						<label>City</label>
+						<input list = "city">
+						<datalist id = "city">
+							<option value = "San Jose"></option>
+							<option value = "Santa Clara"></option>
+							<option value = "Mountain View"></option>
+							<option value = "Sunnyvale"></option>
+							<option value = "Oakland"></option>
+							<option value = "Berkeley"></option>
+							<option value = "Fremont"></option>
+						</datalist>
+					</td>
+					<td>
+						<label>Apt #</label>
+						<input list = "apt">
+						<datalist id = "apt">
+							<option value = "740"></option>
+							<option value = "350 "></option>
+							<option value = "400"></option>
+							<option value = "560"></option>
+							<option value = "612"></option>
+							<option value = "530"></option>
+							<option value = "470"></option>
+						</datalist>
+					</td>
+				</tr>
+				<td>
+					<input type = "hidden" id = "ans1" value = "">
+					<input type = "hidden" id = "ans2" value = "">
+					<input type = "hidden" id = "ans3" value = "">
+					<input type = "hidden" id = "ans4" value = "">
+					<input type = "hidden" id = "ans4" value = "">
+				</td>
+				<footer>
+				<tr>
+					<td><input type = "submit" value = "Submit and Get Score" onclick = "question4(this)"></td>
+					<td><input type = "submit" value = "Skip and Get Score"></td>
+				</tr>
+			</footer>
+			</form>
+		<table>
+	</body>
+</html>

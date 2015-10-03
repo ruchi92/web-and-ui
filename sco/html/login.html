@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Login</title>
+		<script>
+			function validateForm(){
+					var x = document.login.email.value;
+					var y = document.login.password.value;
+					var email = "ruchi@gmail.com";
+					var password = "test";
+
+					if((x == email) && (y == password)){
+						return true;
+					}
+					else{
+						alert ("Login was unsuccessful, please check your email and password");
+						return false;
+					}
+				}
+
+		</script>
+		<style>
+			body, html {
+			  padding: 10px;
+			  margin: 10px;
+			  border: 0px none;
+			  width: 70%;
+			  height: 60%;
+			  float: inherit;
+			}
+			body {
+			  border: 1px solid black;
+			  
+			}
+			header{
+				background-color: aqua;
+			}
+			header{
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body align = "center">
+		
+			<header>
+				<h4>Login Form</h4>
+			</header>
+		
+			<table align = "center">
+						<form name = "login" onSubmit = "return validateForm();" action ="question1.html" method="post">
+							<tr><td><label>Email Address:</label></td>
+								<td><input type = "text" name = "email" placeholder = "ruchi@gmail.com"></td>
+							</tr>
+							<tr><td><label>Password:</label></td>
+								<td><input type = "password" name="password" placeholder = "test"></td>
+							</tr>
+							<tr><td><a href = "#">Create Account/Forgot Password?</a></td>
+								<td><input type = "submit" value = "Login"></td>
+							</tr>
+						</form>
+			</table>
+	</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			body, html {
+			  padding: 10px;
+			  margin: 10px;
+			  border: 0px none;
+			  width: 80%;
+			  height: 95%;
+			  float: inherit;
+			}
+			body {
+			  border: 1px solid black;
+			  
+			}
+			header{
+				background-color: aqua;
+				text-align: center;
+			}
+		</style>
+		
+		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+		<script type = "text/javascript">
+
+			window.onload = function() {
+
+		    	var ex1 = document.getElementById('1');
+		    	var ex2 = document.getElementById('2');
+		    	var ex3 = document.getElementById('3');
+		    	var ex4 = document.getElementById('4');
+		    	var ex5 = document.getElementById('5');
+		    	var ex6 = document.getElementById('6');
+		  
+
+		    	ex1.onclick = handler;
+		    	ex2.onclick = handler1;
+		    	ex3.onclick = handler2;
+		    	ex4.onclick = handler3;
+		    	ex5.onclick = handler4;
+		    	ex6.onclick = handler5;
+
+		    }
+
+		    function handler() {
+		    	//document.getElementById("demo1") = document.getElementById("1").value;
+		    	document.getElementById("demo1").innerHTML = document.getElementById("1").value;
+		    }
+		    function handler1(){
+		    	document.getElementById("demo1").innerHTML = document.getElementById("2").value;
+		    }
+		    function handler2(){
+		    	document.getElementById("demo1").innerHTML = document.getElementById("3").value;
+		    }
+		    function handler3(){
+		    	document.getElementById("demo2").innerHTML = document.getElementById("4").value;
+		    }
+
+		    function handler4(){
+		    	document.getElementById("demo2").innerHTML = document.getElementById("5").value;
+		    }
+
+		    function handler5(){
+		    	document.getElementById("demo2").innerHTML = document.getElementById("6").value;
+		    }
+		    //Passing variable
+		    function question4(chosenans){
+    			var parameters = location.search.substring(1).split("&");   
+    			var firstVal = parameters[0].split("=");
+    			ans1 = unescape(firstVal[1]);
+
+    			var secondVal = parameters[1].split("=");    
+    			ans2 = unescape(secondVal[1]);    
+    			
+    			var thirdVal = parameters[2].split("=");    
+    			ans3 = unescape(secondVal[2]);
+    			
+
+             
+    			document.getElementById('ans1').value = ans1;
+    			document.getElementById('ans2').value = ans2;
+    			document.getElementById('ans3').value = ans3;
+    			alert(ans1);
+    			alert(ans2);
+    			alert(ans3);
+
+       			var value1 = document.getElementByName('option1').value;
+       			var value2 = document.getElementByName('option2').value;
+			}
+
+		</script>
+	</head>
+	<body>
+		<a href ="question3.html"><img src = "../images/back.jpg"/></a>
+		<header>
+			<h4>Question 4</h4>
+		</header>
+		<table>
+			<tr>
+				<td>
+					<tr>
+						<p>As per the latest twitter news, complete the article snippet given by selecting appropriate choices for the blanks.</p>
+					</tr>
+					<tr>
+							<p>Twitter wants more cash. The company announced two<mark id = "demo1">$______</mark>million debt offerings in a filing today, each with a potential of $100 increase provided that the sales are oversubscribed. Assuming full tip, including the $100 million boosters, <mark id = "demo2">_______</mark> will raise upto $1.5 billion with the two offerings.</p>
+					</tr>
+					<tr>
+							<form name = "mark" action = "survey.html" method = "get">
+								<tr>
+									<td><input type = "radio" name ="option1" value = "$650" id = "1" checked>A)Mark1: $650</td>
+									<td><input type = "radio" name ="option1" value = "$550" id = "2">B)Mark1: $550</td>
+									<td><input type = "radio" name ="option1" value = "$350" id = "3">C)Mark1: $350</td>
+								</tr>
+						
+								<tr>
+										<td><input type = "radio" name ="option2" value = "Twitter" id = "4" checked>A) Twitter</td>
+										<td><input type = "radio" name ="option2" value = "Google" id = "5">B) Google</td>
+										<td><input type = "radio" name ="option2" value = "Facebook" id = "6">C) Facebook</td>
+								</tr>
+								<tr>
+									<td>
+										<input type = "hidden" id = "ans1" value = "">
+										<input type = "hidden" id = "ans2" value = "">
+										<input type = "hidden" id = "ans3" value = "">
+									</td>
+								</tr>
+								<footer>
+								<tr>
+									<td><input type = "submit" value = "Submit and Next Question" onclick="question4(this)"></td>
+									<td><input type = "reset" value = "Cancel and Clear Selection"></td>
+								</tr>
+								<footer>
+							</form>
+					</tr>
+				</td>
+			</tr>
+		</table>
+	</body>
+
+</html>
